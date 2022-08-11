@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Spread } from '../services/spread.model';
 import { SpreadService } from '../services/spread.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { SpreadService } from '../services/spread.service';
   styleUrls: ['./card-flipper.component.scss'],
 })
 export class CardFlipperComponent {
-  spread$ = this.spreadService.spread$;
+  @Input() spread!: Spread;
 
   constructor(private spreadService: SpreadService) {
     // Since this is an http observable, there's no need to unsubscribe from it

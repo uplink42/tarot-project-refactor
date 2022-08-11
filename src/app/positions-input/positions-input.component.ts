@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Spread } from '../services/spread.model';
 import { SpreadService } from '../services/spread.service';
 import { StepService } from '../services/step.service';
 
@@ -8,7 +9,7 @@ import { StepService } from '../services/step.service';
   styleUrls: ['./positions-input.component.scss'],
 })
 export class PositionsInputComponent {
-  spread$ = this.spreadService.spread$;
+  @Input() spread!: Spread;
 
   constructor(
     private stepService: StepService,

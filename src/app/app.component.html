@@ -4,12 +4,17 @@
   <app-title-input *ngIf="data.step === 1"></app-title-input>
   <app-spread-picker *ngIf="data.step === 1"></app-spread-picker>
 
+  <!-- You can pass down the spread values to other components just like a regular property -->
   <app-positions-input
-    *ngIf="data.step === 2"
-    [title]="data.spread?.title"
+    *ngIf="data.step === 2 && data.spread"
+    [title]="data.spread.title"
+    [spread]="data.spread"
   ></app-positions-input>
 
-  <app-card-flipper *ngIf="data.step === 3"></app-card-flipper>
+  <app-card-flipper
+    *ngIf="data.step === 3 && data.spread"
+    [spread]="data.spread"
+  ></app-card-flipper>
 
   <router-outlet></router-outlet>
 </ng-container>
