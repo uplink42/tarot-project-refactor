@@ -1,0 +1,15 @@
+<!-- the ng-container is just an element you can anchor structural directives like ngIf that doesen't polute the rendered HTML -->
+<!-- This creates an object data which contains the current spread and step values. They can be read in the template and are always up-to-date with the service -->
+<ng-container *ngIf="{ step: step$ | async, spread: spread$ | async } as data">
+  <app-title-input *ngIf="data.step === 1"></app-title-input>
+  <app-spread-picker *ngIf="data.step === 1"></app-spread-picker>
+
+  <app-positions-input
+    *ngIf="data.step === 2"
+    [title]="data.spread?.title"
+  ></app-positions-input>
+
+  <app-card-flipper *ngIf="data.step === 3"></app-card-flipper>
+
+  <router-outlet></router-outlet>
+</ng-container>
